@@ -26,8 +26,9 @@ pipeline {
 		    }
 			stage('docker-stage-22Q1'){
 			      steps{
-				       sh "chmod -R 777 /mnt/assignmet4/22Q1/index.html" 
-						sh "docker run --name 22Q1-httpd -itdp 80:80 -v vol-22Q1:/usr/local/apache2/htdocs httpd"           
+				        
+						sh "docker run --name 22Q1-httpd -itdp 80:80 -v vol-22Q1:/usr/local/apache2/htdocs httpd"
+                        sh "chmod -R 777 /mnt/assignmet4/22Q1/index.html"						
 						
 				  }
 			}
