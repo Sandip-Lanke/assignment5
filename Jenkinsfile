@@ -8,6 +8,15 @@ pipeline {
 	  }
 	  stages{
 	  
+	    stage('stage1-22Q1'){
+			     steps {
+				       sh "docker stop 22Q1-httpd"
+				       sh "docker rm 22Q1-httpd"
+					   sh "docker rmi httpd"
+				       sh "docker volume rm vol-22Q1"
+				   }
+			   } 
+	  
 	          stage('docker-volume-22Q1'){
 		           steps {
 				        sh "docker volume create vol-22Q1"
@@ -15,14 +24,6 @@ pipeline {
 							
 				        }
 		    }
-		   
-	           /* stage('stage1-22Q1'){
-			     steps {
-				       sh "docker kill 22Q1-httpd"
-				       sh "docker rm 22Q1-httpd"
-				       
-				   }
-			   } */
 			stage('docker-stage-22Q1'){
 			      steps{
 				       sh "chmod -R 777 /mnt/assignmet4/22Q1/index.html" 
@@ -33,6 +34,5 @@ pipeline {
 	  }
 	  
 }
-
 
 
